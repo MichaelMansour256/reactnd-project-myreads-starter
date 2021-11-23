@@ -26,21 +26,18 @@ class BooksApp extends React.Component {
   updateShelf=(book,shelf)=>{
     console.log("this.state.flag");
     const index=this.state.books.findIndex((b)=>b.id===book.id);
-    const bookslist=this.state.books;
     //it is not in shelves
     if(index===-1){
       book.shelf=shelf;
-      bookslist.push(book);
-      
+      this.setState({books:[...this.state.books,book],flag:!this.state.flag});
     }
     else{
-      bookslist[index].shelf=shelf
-      
+      const bookslist = this.state.books.slice();
+      bookslist[index].shelf = shelf; 
+      this.setState({books:bookslist,flag:!this.state.flag}) 
 
     }
-    this.setState({books:bookslist,flag:!this.state.flag});
     BooksAPI.update(book,shelf);
-    console.log("this.state.flag");
   }
   render() {
     return (
