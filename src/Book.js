@@ -6,11 +6,7 @@ class Book extends React.Component {
     book: PropTypes.object.isRequired,
     onUpdateShelf :PropTypes.func.isRequired
   }
-  /*constructor(props) {
-    super(props);
-    // Don't call this.setState() here!
-    //this.onUpdateShelf = this.props.onUpdateShelf.bind(this);
-  }*/
+  
   
   render() {
     return (

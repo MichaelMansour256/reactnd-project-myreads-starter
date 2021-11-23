@@ -10,7 +10,7 @@ class BookSearch extends React.Component {
     books: []
   }
   static propTypes = {
-    
+    books : PropTypes.array.isRequired,
     onUpdateShelf :PropTypes.func.isRequired
   }
   update = (userInput) => {
@@ -25,6 +25,15 @@ class BookSearch extends React.Component {
         if (books.error) {
           books = []
         }
+        books.map(book => {
+          book.shelf = "none";
+          this.props.books.forEach(bookOnShelf => {
+            if (book.id === bookOnShelf.id) {
+              book.shelf = bookOnShelf.shelf;
+            }
+          });
+          return book;
+        });
         this.setState({ books })
       })
     }

@@ -31,9 +31,11 @@ class BooksApp extends React.Component {
     if(index===-1){
       book.shelf=shelf;
       bookslist.push(book);
+      
     }
     else{
       bookslist[index].shelf=shelf
+      
 
     }
     this.setState({books:bookslist,flag:!this.state.flag});
@@ -46,7 +48,7 @@ class BooksApp extends React.Component {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home books={this.state.books} onUpdateShelf={this.updateShelf} />} />
-            <Route path="/search" element={<BookSearch onUpdateShelf={this.updateShelf}/>} />
+            <Route path="/search" element={<BookSearch books={this.state.books} onUpdateShelf={this.updateShelf}/>} />
           </Routes>
         </BrowserRouter>
       </div>
