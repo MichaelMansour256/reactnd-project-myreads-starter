@@ -6,6 +6,7 @@ class Home extends React.Component {
 
   static propTypes = {
     books: PropTypes.array.isRequired,
+    onUpdateShelf :PropTypes.func.isRequired
   }
 
   render() {
@@ -15,7 +16,7 @@ class Home extends React.Component {
       </div>
       <div className="list-books-content">
         <div>
-          <BookShelf books={this.props.books} />
+          <BookShelf books={this.props.books} onUpdateShelf={this.props.updateShelf} />
         </div>
       </div>
       <div className="open-search">

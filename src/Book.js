@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 class Book extends React.Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
+    onUpdateShelf :PropTypes.func.isRequired
   }
-  
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+    
+  }
   render() {
     return (
       <div className="book">
@@ -16,7 +21,7 @@ class Book extends React.Component {
               backgroundImage: `url(${this.props.book.imageLinks !== undefined ? this.props.book.imageLinks.thumbnail : ''})`
             }}></div>
           <div className="book-shelf-changer">
-            <select>
+            <select onChange={(event)=>this.props.onUpdateShelf(this.props.book,event.target.value)} value={this.props.book.shelf? this.props.book.shelf:"none"}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>

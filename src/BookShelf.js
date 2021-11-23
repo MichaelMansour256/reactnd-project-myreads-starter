@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 class BookShelf extends React.Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
+    onUpdateShelf :PropTypes.func.isRequired
   }
   render() {
     const shelves = ["currentlyReading", "wantToRead", "read"]
@@ -26,6 +27,7 @@ class BookShelf extends React.Component {
                             <Book
                               key={book.id}
                               book={book}
+                              onUpdateShelf={this.props.updateShelf}
                             />
                           ))
                         }

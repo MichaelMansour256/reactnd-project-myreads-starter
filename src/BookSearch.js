@@ -2,12 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import PropTypes from 'prop-types';
+
 class BookSearch extends React.Component {
   state = {
     userInputForSearch: "",
     books: []
   }
-
+  static propTypes = {
+    
+    onUpdateShelf :PropTypes.func.isRequired
+  }
   update = (userInput) => {
     if (!userInput) {
       this.setState({
@@ -15,7 +20,7 @@ class BookSearch extends React.Component {
         books: []
       })
     } else {
-      this.setState({ userInputForSearch: userInput.trim() })
+      this.setState({ userInputForSearch: userInput })
       BooksAPI.search(userInput).then((books) => {
         if (books.error) {
           books = []
@@ -49,6 +54,7 @@ class BookSearch extends React.Component {
                 <Book
                   key={book.id}
                   book={book}
+                  onUpdateShelf={this.props.updateShelf}
                 />
               ))
             }
