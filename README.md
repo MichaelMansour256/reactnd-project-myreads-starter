@@ -13,5 +13,5 @@ Then install dependencies and run:
 
 ```
 npm install
-npm run start
+npm start
 ```
