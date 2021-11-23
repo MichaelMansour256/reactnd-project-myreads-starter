@@ -6,6 +6,7 @@ import BookSearch from './BookSearch.js'
 import Home from './Home.js'
 
 class BooksApp extends React.Component {
+  
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -16,12 +17,14 @@ class BooksApp extends React.Component {
     books: [],
     flag: true
   }
+  
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
   }
-  updateShelf(book,shelf){
+  updateShelf=(book,shelf)=>{
+    console.log("this.state.flag");
     const index=this.state.books.findIndex((b)=>b.id===book.id);
     const bookslist=this.state.books;
     //it is not in shelves
@@ -35,6 +38,7 @@ class BooksApp extends React.Component {
     }
     this.setState({books:bookslist,flag:!this.state.flag});
     BooksAPI.update(book,shelf);
+    console.log("this.state.flag");
   }
   render() {
     return (

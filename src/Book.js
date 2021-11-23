@@ -6,11 +6,12 @@ class Book extends React.Component {
     book: PropTypes.object.isRequired,
     onUpdateShelf :PropTypes.func.isRequired
   }
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    
-  }
+    //this.onUpdateShelf = this.props.onUpdateShelf.bind(this);
+  }*/
+  
   render() {
     return (
       <div className="book">
@@ -21,6 +22,7 @@ class Book extends React.Component {
               backgroundImage: `url(${this.props.book.imageLinks !== undefined ? this.props.book.imageLinks.thumbnail : ''})`
             }}></div>
           <div className="book-shelf-changer">
+            
             <select onChange={(event)=>this.props.onUpdateShelf(this.props.book,event.target.value)} value={this.props.book.shelf? this.props.book.shelf:"none"}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>

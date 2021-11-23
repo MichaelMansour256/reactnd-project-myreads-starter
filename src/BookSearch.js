@@ -54,7 +54,7 @@ class BookSearch extends React.Component {
                 <Book
                   key={book.id}
                   book={book}
-                  onUpdateShelf={this.props.updateShelf}
+                  onUpdateShelf={this.props.onUpdateShelf}
                 />
               ))
             }

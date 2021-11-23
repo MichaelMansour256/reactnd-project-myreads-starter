@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 class Home extends React.Component {
 
+  
   static propTypes = {
     books: PropTypes.array.isRequired,
     onUpdateShelf :PropTypes.func.isRequired
@@ -16,7 +17,7 @@ class Home extends React.Component {
       </div>
       <div className="list-books-content">
         <div>
-          <BookShelf books={this.props.books} onUpdateShelf={this.props.updateShelf} />
+          <BookShelf books={this.props.books} onUpdateShelf={this.props.onUpdateShelf} />
         </div>
       </div>
       <div className="open-search">
