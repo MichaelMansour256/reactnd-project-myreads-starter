@@ -5,6 +5,7 @@ class Book extends React.Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
   }
+  
   render() {
     return (
       <div className="book">
